@@ -10,6 +10,8 @@
   --spacing: 0.03em;
   --card-set-gap: 30px; 
 
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 
@@ -159,14 +161,41 @@ header {
 .nav-link:focus {
   color: var(--akcent-color);
 }
+
 .nav-link:hover .header-icon,
 .nav-link:focus .header-icon {
   fill: var(--akcent-color);
 }
 
+.nav-link {
+  transition: color 250ms var(--timing-function);
+}
 
+.nav-link .header-icon {
+  transition: fill 250ms var(--timing-function);
+}
+
+
+/* Акцет цвет + Подчеркивание страницы навигации */
 .current {
+  /* outline: 1px solid #000000; */
+  display: block;
+  position: relative;
   color: var(--akcent-color);
+  
+}
+
+.current::after {
+  content: "";
+  position: absolute;
+  top: 44px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--akcent-color);
+  border-radius: 2px;
+
 }
 
 /* ГЕРОЙ */
@@ -239,12 +268,16 @@ header {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
+  transition: background-color 250ms var(--timing-function);
 }
 
 .hero-button:hover,
 .hero-button:focus {
   background-color: #188ce8;
 }
+
+
 
 /* Модальное окно */
 
@@ -296,7 +329,7 @@ header {
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  
+  cursor: pointer;
   
 }
 
@@ -307,10 +340,6 @@ header {
   background-color: #FFFFFF;
   border: none;
   
-}
-
-.close-icon {
- 
 }
 
 /* Кнопка-фильтры */
@@ -326,6 +355,10 @@ header {
   border-radius: 4px;
   cursor: pointer;
   border: none;
+
+  transition: background-color 250ms var(--timing-function), 
+              color 250ms var(--timing-function), 
+              box-shadow 250ms var(--timing-function);
 }
 
 .button-filter:hover,
@@ -360,6 +393,8 @@ header {
   margin-left: var(--card-set-gap);
   margin-top: var(--card-set-gap);
   border: 1px solid #EEEEEE;
+
+  transition: box-shadow 250ms var(--timing-function);
 }
 
 .item:hover,
@@ -466,6 +501,27 @@ header {
   margin-right: var(--card-set-gap);
 }
 
+/* позиционирование */
+.work-item {
+  position: relative;
+}
+.foto-thumb {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  width: 100%;
+  background-color: rgba(47, 48, 58, 0.8);
+  justify-content: center;
+  align-items: center;
+  padding-top: 27px;
+  padding-bottom: 27px;
+}
+
+.foto-thumb > .subtitle {
+  color:var(--white-text-color);
+
+}
 
 /* НАША КОМАНДА */
 .team-section {
@@ -541,6 +597,12 @@ header {
   height: 44px;
   border-radius: 50%;
 
+  transition: background-color 250ms var(--timing-function);
+
+}
+
+.social-icons-link .icon {
+  transition: fill 250ms var(--timing-function);
 }
 
 .social-icons-item + .social-icons-item {
@@ -555,7 +617,6 @@ header {
 
 .social-icons-link:hover,
 .social-icons-link:focus {
-  fill: var(--white-text-color);
   background-color: var(--akcent-color);
 }
 
@@ -590,10 +651,13 @@ header {
   height: 90px;
   border: 1px solid #AFB1B8;
   border-radius: 4px;
+
+  transition: border 250ms var(--timing-function);
 }
 
 .clients-icon {
   fill: #AFB1B8;
+  transition: fill 250ms var(--timing-function);
 }
 
 .clients-link:hover,
